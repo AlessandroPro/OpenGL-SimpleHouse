@@ -1,0 +1,16 @@
+#version 330 core
+
+out vec4 fragColor;
+
+in vec3 myColor; 
+in vec2 myTexCoords;
+
+uniform sampler2D myTexture;
+uniform float time;
+
+void main()
+{
+	// Sets the fragColor to the color of the texture at myTexCoords, added with 
+	// a time-dependent fraction of myColor. This creates a colored fade in and fade out effect.
+	fragColor = texture(myTexture, myTexCoords) + (time * vec4(myColor, 1.0));
+}

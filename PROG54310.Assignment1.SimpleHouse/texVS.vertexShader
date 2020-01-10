@@ -1,0 +1,18 @@
+#version 330 core
+
+layout (location = 0) in vec3 vPos;      //bring in vPos
+layout (location = 1) in vec3 vColor;    //bring in color
+layout (location = 2) in vec2 vTexCoord; //bring in textCoord
+
+out vec3 myColor;
+out vec2 myTexCoords;
+uniform mat4 vpMatrix; // view-projection transformation matrix
+uniform mat4 mMatrix;  // model transformation matrix
+
+void main()
+{
+	
+	gl_Position = vpMatrix * mMatrix * vec4(vPos, 1.0);    //set gl_position
+	myColor = vColor;						               //set the myColor to vColor
+	myTexCoords = vTexCoord;				               //set the myTexCoords
+}
